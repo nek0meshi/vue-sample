@@ -1,9 +1,11 @@
 import VueRouter from 'vue-router'
 
-import Foo from './Foo.vue'
+import Articles from './pages/articles/index.vue'
+import ArticleDetail from './pages/articles/_id.vue'
 
 const routes = [
-  { path: '/foo', component: Foo }
+  { path: '/articles', component: Articles },
+  { path: '/articles/:id', component: ArticleDetail },
 ]
 
 export default new VueRouter({

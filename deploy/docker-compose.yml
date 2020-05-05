@@ -1,0 +1,11 @@
+version: '3'
+
+services:
+  vue:
+    build:
+      dockerfile: ./deploy/vue-prod/Dockerfile
+      context: ..
+    ports:
+      - 8090:80
+    tty:
+      true

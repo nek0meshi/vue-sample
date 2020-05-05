@@ -1,0 +1,8 @@
+version: '3'
+
+services:
+  express:
+    image: node:12.16.2-alpine
+    volumes:
+      - ../..:/work
+    working_dir: /work

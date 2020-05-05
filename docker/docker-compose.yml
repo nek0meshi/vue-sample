@@ -11,3 +11,12 @@ services:
     tty: true
     working_dir: /frontend
     command: ash -c 'yarn && yarn serve'
+
+  express:
+    image: node:12.16.2-alpine
+    ports:
+      - 9010:9010
+    volumes:
+      - ../backend:/backend
+    working_dir: /backend
+    command: node index.js

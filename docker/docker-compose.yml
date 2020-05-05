@@ -1,0 +1,13 @@
+version: '3'
+
+services:
+  vue:
+    build:
+      context: ../docker/vue
+    ports:
+      - 8080:8080
+    volumes:
+      - ../frontend:/frontend
+    tty: true
+    working_dir: /frontend
+    command: ash -c 'yarn && yarn serve'

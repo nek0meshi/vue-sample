@@ -14,7 +14,7 @@
 </template>
 
 <script>
-import articles from '../../plugins/articles'
+const b_service = require('../../services/backend-service')
 
 export default {
   data () {
@@ -26,9 +26,15 @@ export default {
     }
   },
   created () {
-    setTimeout(() => {
-      this.articles = articles
-    }, 1000)
+    this.fetch()
+  },
+  methods: {
+    async fetch () {
+      await b_service.get('/articles')
+        .then(res => {
+          this.articles = res.data.articles
+        })
+    }
   }
 }
 </script>

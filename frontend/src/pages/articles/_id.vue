@@ -1,20 +1,18 @@
 <template>
   <div>
-    <p>{{ article.id || '' }}</p>
-    <p>{{ article.title || '' }}</p>
-    <p>{{ article.text || '' }}</p>
+    <p>{{ $route.params.id || '' }}</p>
+    <p>{{ title || '' }}</p>
+    <p>{{ text || '' }}</p>
   </div>
 </template>
 <script>
-import articles from '../../plugins/articles'
+const b_service = require('../../services/backend-service')
 
 export default {
   data () {
     return {
-      article: {
-        type: Object,
-        default: () => ({})
-      }
+      title: '',
+      text: ''
     }
   },
   watch: {
@@ -23,10 +21,12 @@ export default {
     }
   },
   methods: {
-    fetch () {
-      setTimeout(() => {
-        this.article = articles.find(a => a.id == this.$route.params.id)
-      }, 1000)
+    async fetch () {
+      await b_service.get(`/articles/${this.$route.params.id}`)
+        .then(res => {
+          this.title = res.data.title
+          this.text = res.data.text
+        })
     }
   },
   created () {

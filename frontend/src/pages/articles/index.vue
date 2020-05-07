@@ -14,7 +14,7 @@
 </template>
 
 <script>
-const b_service = require('../../services/backend-service')
+const b_service = require('@/services/backend-service')
 
 export default {
   data () {

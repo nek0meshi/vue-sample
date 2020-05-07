@@ -6,7 +6,9 @@ COPY ./frontend /frontend
 
 WORKDIR /frontend
 
-RUN yarn build
+RUN rm -rf node_modules
+
+RUN yarn && yarn build
 
 
 FROM nginx:alpine

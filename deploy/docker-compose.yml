@@ -6,6 +6,15 @@ services:
       dockerfile: ./deploy/vue-prod/Dockerfile
       context: ..
     ports:
-      - 8090:80
+      - 8080:80
+    tty:
+      true
+  
+  express:
+    build:
+      dockerfile: ./deploy/express-prod/Dockerfile
+      context: ..
+    ports:
+      - 9010:9010
     tty:
       true

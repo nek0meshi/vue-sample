@@ -32,7 +32,17 @@ export default {
     async fetch () {
       await b_service.get('/articles')
         .then(res => {
-          this.articles = res.data.articles
+          if (res.ok) {
+            return res.json()
+          }
+          throw new Error('error')
+        })
+        .then(json => {
+          console.log(json)
+          this.articles = json.articles
+        })
+        .catch(err => {
+          console.log(err)
         })
     }
   }

@@ -24,8 +24,17 @@ export default {
     async fetch () {
       await b_service.get(`/articles/${this.$route.params.id}`)
         .then(res => {
-          this.title = res.data.title
-          this.text = res.data.text
+          if (res.ok) {
+            return res.json()
+          }
+          throw new Error('error')
+        })
+        .then(json => {
+          this.title = json.title
+          this.text = json.text
+        })
+        .catch(err => {
+          console.log(err)
         })
     }
   },

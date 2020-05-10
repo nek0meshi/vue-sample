@@ -1,5 +1,5 @@
-const axios = require('axios')
+// const axios = require('axios')
 
 export function get (url, config = {}) {
-  return axios.get('http://localhost:9010' + url, config)
+  return fetch('http://localhost:9010' + url, config)
 }

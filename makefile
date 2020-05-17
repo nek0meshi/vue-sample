@@ -5,13 +5,19 @@ serve:
 	cd docker; docker-compose exec vue yarn serve
 
 api-serve:
-	cd docker;  docker-compose exec express yarn dev
+	cd docker; docker-compose exec express yarn dev
 
 install:
 	cd docker; docker-compose exec vue yarn
 
 up-prod:
 	cd deploy; docker-compose up --build
+
+sh:
+	cd docker; docker-compose exec vue ash
+
+api-sh:
+	cd docker; docker-compose exec express ash
 
 docker-build-vue:
 	docker build -t vue-sample-vue -f deploy/vue-prod/Dockerfile .

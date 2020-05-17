@@ -2,8 +2,8 @@ var CACHE_NAME = 'pwa-sample-caches';
 var urlsToCache = [
   '/',
   '/articles',
-  'http://localhost:9010/',
-  'http://localhost:9010/articles',
+  process.env.VUE_APP_API_BASE_URL,
+  process.env.VUE_APP_API_BASE_URL + '/articles',
 ];
 
 self.addEventListener('install', function (event) {

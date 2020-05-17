@@ -1,5 +1,7 @@
 'use strict'
 
+require('dotenv').config()
+
 const express = require('express')
 const app = express()
 
@@ -12,8 +14,7 @@ const articles = [...Array(20).keys()]
   }))
 
 app.use((req, res, next) => {
-  res.append('Access-Control-Allow-Origin', 'https://vue-sample.nek0meshi.com')
-  // res.append('Access-Control-Allow-Origin', 'http://localhost:8080')
+  res.append('Access-Control-Allow-Origin', process.env.FRONTEND_HOST)
   next()
 })
 
@@ -30,4 +31,5 @@ app.get(
   }
 )
 
-app.listen(9010, () => console.log('Example app listening on port 9010!'))
+const PORT = 9010
+app.listen(PORT, () => console.log(`Example app listening on port ${PORT}!`))

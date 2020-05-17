@@ -1,0 +1,26 @@
+version: '3'
+
+services:
+  vue:
+    image: nek0meshi/vue-sample-vue
+    tty:
+      true
+    restart: always
+  
+  express:
+    image: nek0meshi/vue-sample-express
+    tty:
+      true
+    restart: always
+  
+  web:
+    build:
+      context: .
+      dockerfile: nginx/Dockerfile
+    ports:
+      - 80:80
+      - 443:443
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf
+      - ./letencrypt:/etc/letencrypt
+    restart: always

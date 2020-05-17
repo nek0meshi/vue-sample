@@ -11,6 +11,6 @@ FROM nginx:alpine
 
 COPY --from=frontend /frontend/dist /app
 
-COPY ./docker/nginx/nginx.conf /etc/nginx/nginx.conf
+COPY ./docker/vue/nginx.conf /etc/nginx/nginx.conf
 
 EXPOSE 80

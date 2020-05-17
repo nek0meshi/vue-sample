@@ -12,18 +12,19 @@ const articles = [...Array(20).keys()]
   }))
 
 app.use((req, res, next) => {
-  res.append('Access-Control-Allow-Origin', 'http://localhost:8080')
+  res.append('Access-Control-Allow-Origin', 'https://vue-sample.nek0meshi.com')
+  // res.append('Access-Control-Allow-Origin', 'http://localhost:8080')
   next()
 })
 
-app.get('/', (req, res) => res.send('Hello World!'))
-app.get('/articles', (req, res) => {
+app.get('/api', (req, res) => res.send('Hello World!'))
+app.get('/api/articles', (req, res) => {
   res.send({
     'articles': articles
   })
 })
 app.get(
-  '/articles/:userId',
+  '/api/articles/:userId',
   (req, res) => {
     res.send(articles.find(a => a.id == req.params.userId))
   }

@@ -14,37 +14,26 @@
 </template>
 
 <script>
-const b_service = require('@/services/backend-service')
+import { articleMappers } from '@/store/modules/articles'
+import { ACTION_FETCH_ARTICLES } from '@/store/action-types/articles'
+
+const { mapState, mapActions } = articleMappers
 
 export default {
-  data () {
-    return {
-      articles: {
-        type: Array,
-        default: () => []
-      }
-    }
+  computed: {
+    ...mapState([
+      'articles',
+    ])
   },
+
   created () {
-    this.fetch()
+    this[ACTION_FETCH_ARTICLES]()
   },
+
   methods: {
-    async fetch () {
-      await b_service.get('/articles')
-        .then(res => {
-          if (res.ok) {
-            return res.json()
-          }
-          throw new Error('error')
-        })
-        .then(json => {
-          console.log(json)
-          this.articles = json.articles
-        })
-        .catch(err => {
-          console.log(err)
-        })
-    }
+    ...mapActions([
+      ACTION_FETCH_ARTICLES
+    ])
   }
 }
 </script>

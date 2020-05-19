@@ -1,11 +1,9 @@
 import Vue from 'vue'
 import App from '@/components/App.vue'
-import VueRouter from 'vue-router'
-import router from '@/router/index.js'
+import router from '@/router'
+import store from  '@/store'
 
 Vue.config.productionTip = false
-
-Vue.use(VueRouter)
 
 if ('serviceWorker' in navigator) {
   navigator.serviceWorker.register('service-worker.js')
@@ -19,5 +17,6 @@ if ('serviceWorker' in navigator) {
 
 new Vue({
   router,
+  store,
   render: h => h(App),
 }).$mount('#app')

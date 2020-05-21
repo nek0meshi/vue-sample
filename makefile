@@ -27,3 +27,7 @@ docker-build-vue:
 
 docker-build-express:
 	docker build -t vue-sample-express -f deploy/express-prod/Dockerfile .
+
+down:
+	cd docker; docker-compose down -v
+

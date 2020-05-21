@@ -10,6 +10,9 @@ api-serve:
 install:
 	cd docker; docker-compose exec vue yarn
 
+api-install:
+	cd docker; docker-compose exec express yarn
+
 up-prod:
 	cd deploy; docker-compose up --build
 

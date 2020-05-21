@@ -4,3 +4,4 @@ makefile
 README.md
 */node_modules
 */.gitignore
+frontend/dist
